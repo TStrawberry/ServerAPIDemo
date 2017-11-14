@@ -56,7 +56,7 @@ struct API {
 
 /// Closure回调版本
 
-extension Alamofire.DataRequest {
+private extension Alamofire.DataRequest {
 
     func responseObject<T: Mappable>(callback: @escaping (Result<T>) -> Void) {
         responseObject(completionHandler: { (data: DataResponse<T>) in
@@ -99,7 +99,7 @@ func request<T: Mappable, API: APIProtocol>(api: API, parameters: Alamofire.Para
 
 
 /// RxSwift版本
-extension Alamofire.DataRequest {
+private extension Alamofire.DataRequest {
     
     func responseObject<T: Mappable>(type: T.Type) -> Single<T> {
         return Single<T>.create { (event) -> Disposable in
